@@ -1,4 +1,4 @@
-var env = process.env.NODE_ENV || 'development';		//set on heroku
+var env = process.env.NODE_ENV || 'development';		//"production":  on heroku
 
 console.log('env *****', env);
 
