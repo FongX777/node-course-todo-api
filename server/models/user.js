@@ -48,6 +48,7 @@ UserSchema.methods.generateAuthToken = function () {
 	var access = 'auth';
 	var token  = jwt.sign({_id: user._id.toHexString(), access}, 'secret').toString();
 
+	console.log("push", token");
 	user.tokens.push({access, token});
 	
 	return user.save().then(() => {
@@ -62,7 +63,7 @@ UserSchema.statics.findByToken = function (token) {
 	try{
 		decoded = jwt.verify(token, 'secret');
 	}catch (e) {
-		return Promise.reject('test');			//Promise for chaining
+		return Promise.reject();			//Promise for chaining
 		/*return new Promise((resolve, reject) => {
 			reject();
 		});*/
