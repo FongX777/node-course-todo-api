@@ -273,8 +273,8 @@ describe('POST /users/login', () => {
 				//console.log(res.headers);
 
 				User.findById(users[1]._id).then((user) => {
-					//console.log(user.tokens);
-					expect(user.tokens[1]).toInclude({
+					//console.log("user tokens", user.tokens);
+					expect(user.tokens[0]).toInclude({
 						access: 'auth',
 						token: res.headers['x-auth']
 					});
@@ -282,7 +282,6 @@ describe('POST /users/login', () => {
 				}).catch((e) => done(e));
 			});
 	});
-	/*
 	it('should reject invalid login', (done) => {
 		request(app)
 			.post('/users/login')
@@ -300,12 +299,10 @@ describe('POST /users/login', () => {
 				}
 
 				User.findById(users[1]._id).then((user) => {
-					console.log('~~', user.tokens);
 					expect(user.tokens.length).toBe(0);
 					done();
 				}).catch((e) => done(e));
 			});
 
 	});
-	*/
 });
