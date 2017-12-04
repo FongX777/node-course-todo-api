@@ -47,7 +47,7 @@ app.get('/todos/:id', authenticate,  (req, res) => {
 	var id = req.params.id;
 	
 	if(!ObjectID.isValid(id)){
-		console.log('1111111111');
+		//console.log('1111111111');
 		return res.status(404).send();
 	}
 	//Todo.findById(id).
@@ -67,7 +67,6 @@ app.get('/todos/:id', authenticate,  (req, res) => {
 		res.status(400).send();
 	});
 });
-
 app.delete('/todos/:id', authenticate, (req,res) => {
 	//get the id
 	var id = req.params.id;
